@@ -56,4 +56,10 @@ public class Wizard implements Serializable {
         this.artifacts.stream().forEach(artifact -> artifact.setOwner(null));
         this.artifacts = null;
     }
+
+    public void removeArtifact(Artifact artifactToBeRemoved){
+        // Remove artifact owner
+        artifactToBeRemoved.setOwner(null);
+        this.artifacts.remove(artifactToBeRemoved);
+    }
 }
