@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/artifacts") // class level request mapping
+@RequestMapping("${api.endpoint.base-url}/artifacts") // class level request mapping
 public class ArtifactController {
 
     private final ArtifactService artifactService;
@@ -45,7 +45,7 @@ public class ArtifactController {
 
     @PostMapping
     public Result addArtifact(@Valid @RequestBody ArtifactDto artifactDto){
-        // Convert artifact to artifact
+        // Convert artifactDto to artifact
         Artifact newArtifact = this.artifactDtoToArtifactConverter.convert(artifactDto);
         Artifact savedArtifact = this.artifactService.save(newArtifact);
         ArtifactDto savedArtifactDto = this.artifactToArtifactDtoConverter.convert(savedArtifact);
